@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - Royal Bakery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-icon"></div>
+        <p>Loading Menu...</p>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <a href="tel:+919876543210"><i class="fas fa-phone"></i> +91 98765 43210</a>
+                <a href="mailto:hello@royalbakery.com"><i class="fas fa-envelope"></i> hello@royalbakery.com</a>
+                <a><i class="fas fa-clock"></i> Mon-Sun: 7AM - 10PM</a>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🎂</div>
+                <div class="logo-text">
+                    <h1>Royal Bakery</h1>
+                    <span>Since 2010</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="menu.html" class="active">Our Menu</a>
+                <a href="contact.html">Contact</a>
+                <a href="menu.html" class="nav-order-btn">🛒 Order Now</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Our Menu</span>
+            </div>
+            <h1>Our Delicious Menu</h1>
+            <p>Browse our complete range of freshly baked breads, cakes, pastries and more. Click to order on WhatsApp!</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section section-padding">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs reveal">
+                <button class="filter-tab active" data-filter="all">🍽️ All Items</button>
+                <button class="filter-tab" data-filter="cakes">🎂 Cakes</button>
+                <button class="filter-tab" data-filter="cupcakes">🧁 Cupcakes</button>
+                <button class="filter-tab" data-filter="pastries">🥐 Pastries</button>
+                <button class="filter-tab" data-filter="breads">🍞 Breads</button>
+                <button class="filter-tab" data-filter="cookies">🍪 Cookies</button>
+                <button class="filter-tab" data-filter="donuts">🍩 Donuts</button>
+                <button class="filter-tab" data-filter="chocolates">🍫 Chocolates</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid" id="menuGrid">
+
+                <!-- CAKES -->
+                <div class="menu-card reveal" data-category="cakes">
+                    <div class="menu-card-image">
+                        🎂
+                        <span class="product-badge badge-bestseller">⭐ Bestseller</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cakes</span>
+                        <h3>Belgian Chocolate Truffle Cake</h3>
+                        <p>Rich dark chocolate layers with silky ganache and Belgian chocolate shavings. Pure indulgence!</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🥚 Eggless Available</span>
+                            <span class="menu-tag">🏷️ 0.5kg - 5kg</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹899 <small>/kg</small></span>
+                            <button class="btn-enquiry" onclick="openLightbox('Belgian Chocolate Truffle Cake', '₹899/kg', '🎂', 'Cakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cakes">
+                    <div class="menu-card-image">
+                        🎂
+                        <span class="product-badge badge-popular">🔥 Popular</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cakes</span>
+                        <h3>Classic Red Velvet Cake</h3>
+                        <p>Moist red velvet sponge layers with luxurious cream cheese frosting. A timeless favorite!</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🥚 Contains Egg</span>
+                            <span class="menu-tag">🏷️ 0.5kg - 3kg</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹799 <small>/kg</small></span>
+                            <button class="btn-enquiry" onclick="openLightbox('Classic Red Velvet Cake', '₹799/kg', '🎂', 'Cakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cakes">
+                    <div class="menu-card-image">
+                        🎂
+                        <span class="product-badge badge-new">✨ New</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cakes</span>
+                        <h3>Butterscotch Crunch Cake</h3>
+                        <p>Soft butterscotch sponge topped with caramelized praline and butterscotch cream layers</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🥚 Eggless Available</span>
+                            <span class="menu-tag">🏷️ 0.5kg - 3kg</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹699 <small>/kg</small></span>
+                            <button class="btn-enquiry" onclick="openLightbox('Butterscotch Crunch Cake', '₹699/kg', '🎂', 'Cakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cakes">
+                    <div class="menu-card-image">🎂</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cakes</span>
+                        <h3>Fresh Fruit Gateau</h3>
+                        <p>Light vanilla sponge layered with fresh whipped cream and seasonal fruits</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🥚 Eggless Available</span>
+                            <span class="menu-tag">🏷️ 1kg - 5kg</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹749 <small>/kg</small></span>
+                            <button class="btn-enquiry" onclick="openLightbox('Fresh Fruit Gateau', '₹749/kg', '🎂', 'Cakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cakes">
+                    <div class="menu-card-image">🎂</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cakes</span>
+                        <h3>Dutch Chocolate Overload</h3>
+                        <p>Triple chocolate layers with fudge, chocolate chips, and rich cocoa ganache topping</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🥚 Contains Egg</span>
+                            <span class="menu-tag">🏷️ 0.5kg - 3kg</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹849 <small>/kg</small></span>
+                            <button class="btn-enquiry" onclick="openLightbox('Dutch Chocolate Overload', '₹849/kg', '🎂', 'Cakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CUPCAKES -->
+                <div class="menu-card reveal" data-category="cupcakes">
+                    <div class="menu-card-image">
+                        🧁
+                        <span class="product-badge badge-bestseller">⭐ Bestseller</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cupcakes</span>
+                        <h3>Red Velvet Cupcake Box (6 pcs)</h3>
+                        <p>Six gorgeous red velvet cupcakes topped with smooth cream cheese frosting</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">📦 Box of 6</span>
+                            <span class="menu-tag">🎁 Gift Ready</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹449</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Red Velvet Cupcake Box (6 pcs)', '₹449', '🧁', 'Cupcakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cupcakes">
+                    <div class="menu-card-image">🧁</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cupcakes</span>
+                        <h3>Vanilla Rainbow Cupcakes (12 pcs)</h3>
+                        <p>Colorful vanilla cupcakes with rainbow buttercream - perfect for parties!</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">📦 Box of 12</span>
+                            <span class="menu-tag">🎉 Party Special</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹699</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Vanilla Rainbow Cupcakes (12 pcs)', '₹699', '🧁', 'Cupcakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cupcakes">
+                    <div class="menu-card-image">
+                        🧁
+                        <span class="product-badge badge-new">✨ New</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cupcakes</span>
+                        <h3>Chocolate Hazelnut Cupcakes (6 pcs)</h3>
+                        <p>Rich chocolate cupcakes filled with Nutella and topped with hazelnut crunch</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">📦 Box of 6</span>
+                            <span class="menu-tag">🌰 Premium</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹549</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Chocolate Hazelnut Cupcakes (6 pcs)', '₹549', '🧁', 'Cupcakes')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASTRIES -->
+                <div class="menu-card reveal" data-category="pastries">
+                    <div class="menu-card-image">
+                        🥐
+                        <span class="product-badge badge-popular">🔥 Popular</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Pastries</span>
+                        <h3>Butter Croissant (Pack of 4)</h3>
+                        <p>Authentic French-style butter croissants, golden, flaky and absolutely heavenly</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🇫🇷 French Style</span>
+                            <span class="menu-tag">📦 Pack of 4</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹249</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Butter Croissant (Pack of 4)', '₹249', '🥐', 'Pastries')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="pastries">
+                    <div class="menu-card-image">🥐</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Pastries</span>
+                        <h3>Chocolate Eclair (Pack of 3)</h3>
+                        <p>Classic choux pastry filled with vanilla cream and topped with rich chocolate glaze</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🍫 Chocolate Glaze</span>
+                            <span class="menu-tag">📦 Pack of 3</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹299</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Chocolate Eclair (Pack of 3)', '₹299', '🥐', 'Pastries')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="pastries">
+                    <div class="menu-card-image">🥐</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Pastries</span>
+                        <h3>Chicken Puff Pastry (Pack of 6)</h3>
+                        <p>Flaky golden puff filled with spiced chicken mince - perfect savory snack!</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🍗 Non-Veg</span>
+                            <span class="menu-tag">📦 Pack of 6</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹349</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Chicken Puff Pastry (Pack of 6)', '₹349', '🥐', 'Pastries')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BREADS -->
+                <div class="menu-card reveal" data-category="breads">
+                    <div class="menu-card-image">
+                        🍞
+                        <span class="product-badge badge-new">✨ New</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Breads</span>
+                        <h3>Artisan Sourdough Loaf</h3>
+                        <p>Traditional 48-hour fermented sourdough bread with crispy crust and soft center</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🌾 Whole Grain</span>
+                            <span class="menu-tag">⏰ 48hr Fermented</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹199</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Artisan Sourdough Loaf', '₹199', '🍞', 'Breads')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="breads">
+                    <div class="menu-card-image">🍞</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Breads</span>
+                        <h3>Multigrain Health Bread</h3>
+                        <p>Nutritious bread made with 7 grains, seeds and natural honey for a healthy lifestyle</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🌾 7 Grains</span>
+                            <span class="menu-tag">💚 Healthy</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹149</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Multigrain Health Bread', '₹149', '🍞', 'Breads')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="breads">
+                    <div class="menu-card-image">🍞</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Breads</span>
+                        <h3>Garlic Herb Focaccia</h3>
+                        <p>Italian-style flatbread topped with roasted garlic, rosemary and extra virgin olive oil</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🇮🇹 Italian Style</span>
+                            <span class="menu-tag">🧄 Garlic Herb</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹249</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Garlic Herb Focaccia', '₹249', '🍞', 'Breads')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COOKIES -->
+                <div class="menu-card reveal" data-category="cookies">
+                    <div class="menu-card-image">
+                        🍪
+                        <span class="product-badge badge-bestseller">⭐ Bestseller</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cookies</span>
+                        <h3>Chocolate Chip Cookie Box</h3>
+                        <p>Classic American-style chocolate chip cookies, chewy center with crispy edges</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">📦 250g Box</span>
+                            <span class="menu-tag">🍫 Belgian Choco</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹299</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Chocolate Chip Cookie Box', '₹299', '🍪', 'Cookies')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="cookies">
+                    <div class="menu-card-image">🍪</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Cookies</span>
+                        <h3>Premium Butter Cookies Tin</h3>
+                        <p>Assorted Danish-style butter cookies in a premium gift tin - perfect for gifting!</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🎁 Gift Tin</span>
+                            <span class="menu-tag">📦 500g</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹499</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Premium Butter Cookies Tin', '₹499', '🍪', 'Cookies')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DONUTS -->
+                <div class="menu-card reveal" data-category="donuts">
+                    <div class="menu-card-image">
+                        🍩
+                        <span class="product-badge badge-popular">🔥 Popular</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Donuts</span>
+                        <h3>Assorted Donut Box (6 pcs)</h3>
+                        <p>Box of 6 assorted donuts - glazed, chocolate, strawberry, sprinkles and more!</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">📦 Box of 6</span>
+                            <span class="menu-tag">🌈 Assorted</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹399</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Assorted Donut Box (6 pcs)', '₹399', '🍩', 'Donuts')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="donuts">
+                    <div class="menu-card-image">🍩</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Donuts</span>
+                        <h3>Nutella Filled Donuts (4 pcs)</h3>
+                        <p>Soft fried donuts generously filled with warm Nutella and dusted with powdered sugar</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">📦 Pack of 4</span>
+                            <span class="menu-tag">🌰 Nutella Filled</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹349</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Nutella Filled Donuts (4 pcs)', '₹349', '🍩', 'Donuts')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHOCOLATES -->
+                <div class="menu-card reveal" data-category="chocolates">
+                    <div class="menu-card-image">
+                        🍫
+                        <span class="product-badge badge-new">✨ New</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Chocolates</span>
+                        <h3>Handmade Truffle Box (12 pcs)</h3>
+                        <p>Assorted handmade chocolate truffles - dark, milk, white & flavored varieties</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🎁 Luxury Gift Box</span>
+                            <span class="menu-tag">📦 12 Pieces</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹599</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Handmade Truffle Box (12 pcs)', '₹599', '🍫', 'Chocolates')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal" data-category="chocolates">
+                    <div class="menu-card-image">🍫</div>
+                    <div class="menu-card-content">
+                        <span class="menu-card-category">Chocolates</span>
+                        <h3>Chocolate Gift Hamper</h3>
+                        <p>Premium hamper with truffles, brownies, chocolate bark & hot chocolate mix</p>
+                        <div class="menu-card-tags">
+                            <span class="menu-tag">🎁 Premium Hamper</span>
+                            <span class="menu-tag">🎀 Gift Ready</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <span class="menu-price">₹1,299</span>
+                            <button class="btn-enquiry" onclick="openLightbox('Chocolate Gift Hamper', '₹1,299', '🍫', 'Chocolates')">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <div class="cta-badge">
+                    <span>🎨</span> Custom Orders Welcome
+                </div>
+                <h2>Need a Custom Cake or Bulk Order?</h2>
+                <p>We create personalized cakes for birthdays, weddings, anniversaries and corporate events. Share your vision with us!</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/919876543210?text=Hi! I need a custom cake order. Here are my requirements:" target="_blank" class="btn btn-white">
+                        <i class="fab fa-whatsapp"></i> Custom Order on WhatsApp
+                    </a>
+                    <a href="contact.html" class="btn btn-outline-white">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <div class="lightbox-modal">
+            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+            <div class="lightbox-header">
+                <div class="lightbox-product-icon" id="lightboxIcon">🎂</div>
+                <h2 id="lightboxTitle">Product Name</h2>
+                <p id="lightboxCategory">Category • <strong id="lightboxPrice">₹000</strong></p>
+            </div>
+            <form class="lightbox-form" id="lightboxForm" onsubmit="return submitToWhatsApp(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" id="lb-name" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="lb-phone" placeholder="Your phone number" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="lb-email" placeholder="your@email.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Quantity <span class="required">*</span></label>
+                        <select id="lb-quantity" required>
+                            <option value="">Select Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="10+">10+ (Bulk)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Date <span class="required">*</span></label>
+                        <input type="date" id="lb-date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address <span class="required">*</span></label>
+                    <input type="text" id="lb-address" placeholder="Full delivery address" required>
+                </div>
+                <div class="form-group">
+                    <label>Special Instructions</label>
+                    <textarea id="lb-message" placeholder="Any special message on cake, customization requests, allergies, etc."></textarea>
+                </div>
+                <button type="submit" class="form-submit-btn">
+                    <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+                </button>
+                <p class="form-note">
+                    <i class="fas fa-lock"></i> Your details are secure. Order will be confirmed on WhatsApp.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">🎂</div>
+                        <div class="logo-text">
+                            <h1>Royal Bakery</h1>
+                            <span>Since 2010</span>
+                        </div>
+                    </a>
+                    <p>Royal Bakery has been spreading happiness through freshly baked breads, cakes, and pastries since 2010.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Products</h3>
+                    <ul>
+                        <li><a href="menu.html">Birthday Cakes</a></li>
+                        <li><a href="menu.html">Wedding Cakes</a></li>
+                        <li><a href="menu.html">Cupcakes</a></li>
+                        <li><a href="menu.html">Pastries</a></li>
+                        <li><a href="menu.html">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact-item">
+                        <div class="fci-icon">📍</div>
+                        <p>123 Baker Street, Sweet Lane, Mumbai 400001</p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="fci-icon">📞</div>
+                        <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="fci-icon">✉️</div>
+                        <p><a href="mailto:hello@royalbakery.com">hello@royalbakery.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Royal Bakery. All rights reserved. Made with ❤️ & 🍰</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/919876543210?text=Hi Royal Bakery! I want to place an order from the menu 🍰" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="wa-tooltip">Order on WhatsApp!</span>
+        </a>
+    </div>
+
+    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
