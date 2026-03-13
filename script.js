@@ -186,14 +186,14 @@ filterTabs.forEach(tab => {
 });
 
 // ============================================
-// LIGHTBOX FUNCTIONALITY
+// LIGHTBOX FUNCTIONALITY - UPDATED
 // ============================================
 const lightboxOverlay = document.getElementById('lightboxOverlay');
 let currentProduct = {};
 
 function openLightbox(name, price, icon, category) {
     currentProduct = { name, price, icon, category };
-    
+
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxPrice = document.getElementById('lightboxPrice');
     const lightboxIcon = document.getElementById('lightboxIcon');
@@ -201,15 +201,19 @@ function openLightbox(name, price, icon, category) {
     const dateInput = document.getElementById('lb-date');
 
     if (lightboxTitle) lightboxTitle.textContent = name;
-    if (lightboxPrice) lightboxPrice.textContent = price;
+    if (lightboxPrice) lightboxPrice.innerHTML = `💰 ${price}`;
     if (lightboxIcon) lightboxIcon.textContent = icon;
-    if (lightboxCategory) lightboxCategory.innerHTML = category + ' • <strong>' + price + '</strong>';
-    
+    if (lightboxCategory) lightboxCategory.innerHTML = `📂 ${category}`;
+
     // Set minimum date to today
     if (dateInput) {
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('min', today);
     }
+
+    // Reset form
+    const form = document.getElementById('lightboxForm');
+    if (form) form.reset();
 
     if (lightboxOverlay) {
         lightboxOverlay.classList.add('active');
@@ -224,7 +228,7 @@ function closeLightbox() {
     }
 }
 
-// Close lightbox on overlay click
+// Close on overlay click
 if (lightboxOverlay) {
     lightboxOverlay.addEventListener('click', (e) => {
         if (e.target === lightboxOverlay) {
@@ -233,15 +237,14 @@ if (lightboxOverlay) {
     });
 }
 
-// Close lightbox on Escape key
+// Close on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    }
+    if (e.key === 'Escape') closeLightbox();
 });
 
+
 // ============================================
-// SUBMIT ORDER TO WHATSAPP
+// SUBMIT ORDER TO WHATSAPP - UPDATED
 // ============================================
 function submitToWhatsApp(event) {
     event.preventDefault();
@@ -251,102 +254,125 @@ function submitToWhatsApp(event) {
     const email = document.getElementById('lb-email').value.trim();
     const quantity = document.getElementById('lb-quantity').value;
     const date = document.getElementById('lb-date').value;
+    const time = document.getElementById('lb-time').value;
     const address = document.getElementById('lb-address').value.trim();
     const message = document.getElementById('lb-message').value.trim();
 
-    // Validation
+    // Validations
     if (!name || !phone || !quantity || !date || !address) {
-        alert('Please fill in all required fields!');
+        showFormError('Please fill in all required fields! ⚠️');
         return false;
     }
 
-    // Phone validation
-    if (phone.length < 10) {
-        alert('Please enter a valid phone number!');
+    if (phone.length < 10 || !/^\d{10}$/.test(phone)) {
+        showFormError('Please enter a valid 10-digit phone number! 📞');
         return false;
     }
 
-    // Format the WhatsApp message
-    let whatsappMessage = `🎂 *NEW ORDER - Royal Bakery* 🎂\n\n`;
-    whatsappMessage += `━━━━━━━━━━━━━━━━━━\n`;
-    whatsappMessage += `📦 *Product:* ${currentProduct.name}\n`;
-    whatsappMessage += `💰 *Price:* ${currentProduct.price}\n`;
-    whatsappMessage += `📂 *Category:* ${currentProduct.category}\n`;
-    whatsappMessage += `━━━━━━━━━━━━━━━━━━\n\n`;
-    whatsappMessage += `👤 *Customer Details:*\n`;
-    whatsappMessage += `• Name: ${name}\n`;
-    whatsappMessage += `• Phone: ${phone}\n`;
-    if (email) whatsappMessage += `• Email: ${email}\n`;
-    whatsappMessage += `• Quantity: ${quantity}\n`;
-    whatsappMessage += `• Delivery Date: ${date}\n`;
-    whatsappMessage += `• Address: ${address}\n`;
+    // Format date nicely
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toLocaleDateString('en-IN', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+
+    // Build WhatsApp Message
+    let wa = '';
+    wa += `🎂 *NEW ORDER — Royal Bakery*\n`;
+    wa += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+    wa += `📦 *PRODUCT DETAILS*\n`;
+    wa += `┌─────────────────────\n`;
+    wa += `│ 🏷️ *Item:* ${currentProduct.name}\n`;
+    wa += `│ 💰 *Price:* ${currentProduct.price}\n`;
+    wa += `│ 📂 *Category:* ${currentProduct.category}\n`;
+    wa += `│ 🔢 *Quantity:* ${quantity}\n`;
+    wa += `└─────────────────────\n\n`;
+
+    wa += `👤 *CUSTOMER INFO*\n`;
+    wa += `┌─────────────────────\n`;
+    wa += `│ 📛 *Name:* ${name}\n`;
+    wa += `│ 📞 *Phone:* ${phone}\n`;
+    if (email) wa += `│ ✉️ *Email:* ${email}\n`;
+    wa += `└─────────────────────\n\n`;
+
+    wa += `🚚 *DELIVERY DETAILS*\n`;
+    wa += `┌─────────────────────\n`;
+    wa += `│ 📅 *Date:* ${formattedDate}\n`;
+    if (time) wa += `│ ⏰ *Time:* ${time}\n`;
+    wa += `│ 📍 *Address:* ${address}\n`;
+    wa += `└─────────────────────\n`;
+
     if (message) {
-        whatsappMessage += `\n📝 *Special Instructions:*\n${message}\n`;
+        wa += `\n📝 *SPECIAL INSTRUCTIONS*\n`;
+        wa += `"${message}"\n`;
     }
-    whatsappMessage += `\n━━━━━━━━━━━━━━━━━━\n`;
-    whatsappMessage += `Please confirm this order. Thank you! 🙏`;
 
-    // Encode and redirect to WhatsApp
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappURL = `https://wa.me/919876543210?text=${encodedMessage}`;
+    wa += `\n━━━━━━━━━━━━━━━━━━━━\n`;
+    wa += `✅ Please confirm this order.\n`;
+    wa += `🙏 Thank you for choosing Royal Bakery!`;
 
     // Open WhatsApp
-    window.open(whatsappURL, '_blank');
+    const encodedMsg = encodeURIComponent(wa);
+    const waURL = `https://wa.me/919876543210?text=${encodedMsg}`;
+    window.open(waURL, '_blank');
 
-    // Close lightbox and reset form
+    // Close & Reset
     closeLightbox();
     document.getElementById('lightboxForm').reset();
 
     return false;
 }
 
-// ============================================
-// CONTACT FORM TO WHATSAPP
-// ============================================
-function handleContactForm(event) {
-    event.preventDefault();
+// Form Error Alert (Custom)
+function showFormError(msg) {
+    // Create custom error toast
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        background: linear-gradient(135deg, #FF6B6B, #EE5A5A);
+        color: white;
+        padding: 14px 28px;
+        border-radius: 14px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 100000;
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        animation: toastIn 0.4s ease forwards;
+        max-width: 90%;
+        text-align: center;
+    `;
+    toast.textContent = msg;
 
-    const name = document.getElementById('c-name').value.trim();
-    const phone = document.getElementById('c-phone').value.trim();
-    const email = document.getElementById('c-email').value.trim();
-    const subject = document.getElementById('c-subject').value;
-    const message = document.getElementById('c-message').value.trim();
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateX(-50%) translateY(0); }
+            to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+        }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(toast);
 
-    // Validation
-    if (!name || !phone || !email || !subject || !message) {
-        alert('Please fill in all required fields!');
-        return false;
-    }
-
-    if (phone.length < 10) {
-        alert('Please enter a valid phone number!');
-        return false;
-    }
-
-    // Format WhatsApp message
-    let whatsappMessage = `📩 *NEW ENQUIRY - Royal Bakery* 📩\n\n`;
-    whatsappMessage += `━━━━━━━━━━━━━━━━━━\n`;
-    whatsappMessage += `👤 *Name:* ${name}\n`;
-    whatsappMessage += `📞 *Phone:* ${phone}\n`;
-    whatsappMessage += `✉️ *Email:* ${email}\n`;
-    whatsappMessage += `📌 *Subject:* ${subject}\n`;
-    whatsappMessage += `━━━━━━━━━━━━━━━━━━\n\n`;
-    whatsappMessage += `💬 *Message:*\n${message}\n\n`;
-    whatsappMessage += `━━━━━━━━━━━━━━━━━━\n`;
-    whatsappMessage += `Please respond at your earliest. Thank you! 🙏`;
-
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappURL = `https://wa.me/919876543210?text=${encodedMessage}`;
-
-    window.open(whatsappURL, '_blank');
-
-    // Reset form
-    document.getElementById('contactForm').reset();
-
-    // Show success message
-    alert('✅ Your message has been prepared for WhatsApp! Click send in the WhatsApp window that opened.');
-
-    return false;
+    // Remove after 3s
+    setTimeout(() => {
+        toast.style.animation = 'toastOut 0.4s ease forwards';
+        setTimeout(() => {
+            toast.remove();
+            style.remove();
+        }, 400);
+    }, 3000);
 }
 
 // ============================================

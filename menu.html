@@ -530,66 +530,198 @@
         </div>
     </section>
 
-    <!-- LIGHTBOX MODAL -->
-    <div class="lightbox-overlay" id="lightboxOverlay">
-        <div class="lightbox-modal">
-            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-            <div class="lightbox-header">
-                <div class="lightbox-product-icon" id="lightboxIcon">🎂</div>
-                <h2 id="lightboxTitle">Product Name</h2>
-                <p id="lightboxCategory">Category • <strong id="lightboxPrice">₹000</strong></p>
+   <!-- ============================================
+     LIGHTBOX MODAL - PREMIUM ORDER FORM
+     ============================================ -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+    <div class="lightbox-modal">
+        
+        <!-- Close Button -->
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+
+        <!-- ---- HEADER ---- -->
+        <div class="lightbox-header">
+            <div class="lightbox-product-icon" id="lightboxIcon">🎂</div>
+            <h2 id="lightboxTitle">Product Name</h2>
+            <div class="lightbox-meta">
+                <span class="meta-tag category-tag" id="lightboxCategory">
+                    📂 Category
+                </span>
+                <span class="meta-tag price-tag" id="lightboxPrice">
+                    💰 ₹000
+                </span>
+                <span class="meta-tag rating-tag">
+                    ⭐ 4.9 Rating
+                </span>
             </div>
-            <form class="lightbox-form" id="lightboxForm" onsubmit="return submitToWhatsApp(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Full Name <span class="required">*</span></label>
-                        <input type="text" id="lb-name" placeholder="Your full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="lb-phone" placeholder="Your phone number" required>
+        </div>
+
+        <!-- ---- ORDER FORM ---- -->
+        <form class="lightbox-form" id="lightboxForm" onsubmit="return submitToWhatsApp(event)">
+
+            <!-- Section: Personal Details -->
+            <div class="form-section-title">
+                <div class="section-icon">👤</div>
+                <h3>Personal Details <span>(Who's ordering?)</span></h3>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        <span class="label-icon">👤</span>
+                        Full Name
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="lb-name" placeholder="e.g. Rahul Sharma" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="lb-email" placeholder="your@email.com">
+                    <label>
+                        <span class="label-icon">📞</span>
+                        Phone Number
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📞</span>
+                        <input type="tel" id="lb-phone" placeholder="e.g. 98765 43210" required 
+                               pattern="[0-9]{10}" maxlength="10" title="Enter 10 digit mobile number">
+                    </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Quantity <span class="required">*</span></label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="label-icon">✉️</span>
+                    Email Address
+                    <span class="optional-tag">Optional</span>
+                </label>
+                <div class="input-with-icon">
+                    <span class="input-icon">✉️</span>
+                    <input type="email" id="lb-email" placeholder="e.g. rahul@email.com">
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="form-divider"></div>
+
+            <!-- Section: Order Details -->
+            <div class="form-section-title">
+                <div class="section-icon">📦</div>
+                <h3>Order Details <span>(What & when?)</span></h3>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        <span class="label-icon">🔢</span>
+                        Quantity
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📦</span>
                         <select id="lb-quantity" required>
-                            <option value="">Select Quantity</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6-10">6 - 10</option>
-                            <option value="10+">10+ (Bulk)</option>
+                            <option value="">Select Qty</option>
+                            <option value="1">1 Unit</option>
+                            <option value="2">2 Units</option>
+                            <option value="3">3 Units</option>
+                            <option value="4">4 Units</option>
+                            <option value="5">5 Units</option>
+                            <option value="6-10">6 - 10 Units</option>
+                            <option value="10+">10+ (Bulk Order)</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Delivery Date <span class="required">*</span></label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="label-icon">📅</span>
+                        Delivery Date
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">📅</span>
                         <input type="date" id="lb-date" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Delivery Address <span class="required">*</span></label>
-                    <input type="text" id="lb-address" placeholder="Full delivery address" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="label-icon">⏰</span>
+                    Preferred Time Slot
+                    <span class="optional-tag">Optional</span>
+                </label>
+                <div class="input-with-icon">
+                    <span class="input-icon">⏰</span>
+                    <select id="lb-time">
+                        <option value="">Select Time Slot</option>
+                        <option value="Morning (8AM - 12PM)">🌅 Morning (8AM - 12PM)</option>
+                        <option value="Afternoon (12PM - 4PM)">☀️ Afternoon (12PM - 4PM)</option>
+                        <option value="Evening (4PM - 8PM)">🌇 Evening (4PM - 8PM)</option>
+                        <option value="Night (8PM - 10PM)">🌙 Night (8PM - 10PM)</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label>Special Instructions</label>
-                    <textarea id="lb-message" placeholder="Any special message on cake, customization requests, allergies, etc."></textarea>
+            </div>
+
+            <!-- Divider -->
+            <div class="form-divider"></div>
+
+            <!-- Section: Delivery Details -->
+            <div class="form-section-title">
+                <div class="section-icon">🚚</div>
+                <h3>Delivery Details <span>(Where to deliver?)</span></h3>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="label-icon">📍</span>
+                    Delivery Address
+                    <span class="required">*</span>
+                </label>
+                <div class="input-with-icon">
+                    <span class="input-icon">📍</span>
+                    <input type="text" id="lb-address" placeholder="e.g. 123 MG Road, Andheri West, Mumbai" required>
                 </div>
-                <button type="submit" class="form-submit-btn">
-                    <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
-                </button>
-                <p class="form-note">
-                    <i class="fas fa-lock"></i> Your details are secure. Order will be confirmed on WhatsApp.
-                </p>
-            </form>
-        </div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="label-icon">📝</span>
+                    Special Instructions / Cake Message
+                    <span class="optional-tag">Optional</span>
+                </label>
+                <textarea id="lb-message" placeholder="e.g. Write 'Happy Birthday Priya' on cake, no nuts please, eggless preferred..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="form-submit-btn">
+                <span class="btn-icon"><i class="fab fa-whatsapp"></i></span>
+                <span class="btn-text">
+                    Send Order via WhatsApp
+                    <small>Instant Confirmation on WhatsApp</small>
+                </span>
+            </button>
+
+            <!-- Form Footer Trust Badges -->
+            <div class="form-footer">
+                <div class="form-footer-item secure">
+                    <span class="footer-icon">🔒</span>
+                    <span>100% Secure</span>
+                </div>
+                <div class="form-footer-item fast">
+                    <span class="footer-icon">⚡</span>
+                    <span>Instant Reply</span>
+                </div>
+                <div class="form-footer-item safe">
+                    <span class="footer-icon">✅</span>
+                    <span>No Spam Ever</span>
+                </div>
+            </div>
+
+        </form>
     </div>
+</div>
 
     <!-- Footer -->
     <footer class="footer">
